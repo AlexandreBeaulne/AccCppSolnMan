@@ -1,0 +1,11 @@
+# Deployment information doesn't need to be added to VC
+
+*.pyc
+
+.emacs*
+
+*~
+
+*.out
+
+*.swp # vim
