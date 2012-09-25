@@ -3,7 +3,8 @@
 #include<algorithm>
 #include<vector>
 
-std::ostream & operator<<(std::ostream &lhs, const std::vector<double> & rhs){
+template<class TYPE>
+std::ostream & operator<<(std::ostream &lhs, const std::vector<TYPE> & rhs){
     lhs << '[';
     for(int i=0;i<rhs.size();++i){
         lhs << rhs[i];
