@@ -32,24 +32,25 @@ int main(){
     int idx = 0;
     int count = 1;
     std::vector<int> counts;
-    while(idx+count<text.size()){
-        if(text[idx].compare(text[idx+count])){
-            ++count;
-        }
-        else{
+    std::vector<std::string> glossary;
+    while(idx<text.size()){
+        if(idx+count>=text.size()||text[idx].compare(text[idx+count])){
+            glossary.push_back(text[idx]);
             counts.push_back(count);
             idx += count;
             count=1;
         }
+        else{
+            ++count;
+        }
     }
+    
+    std::cout << std::endl;
 
-    std::vector<std::string> text2 = unique(text.begin(),text.end(),std::string.compare);
-
-    std::cout << "\n\ntext: " << text << std::endl;
-
-//    std::string text;
-//    getline(std::cin, text, '\n');
-//    std::cout << text << std::endl;
+    for(int i=0;i<glossary.size();++i){
+        std::cout << "word: " << glossary[i];
+        std::cout << ", occurences: " << counts[i] << std::endl;
+    }
 
     return 0;
 }
