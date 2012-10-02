@@ -40,7 +40,7 @@ int main()
     }
     // write the result
     streamsize prec = cout.precision();
-    cout << "Your final grade is " << setprecision(3)
+    cout << "\nYour final grade is " << setprecision(3)
     << 0.2 * midterm + 0.4 * final + 0.4 * sum / (count>0?count:1)
     << setprecision(prec) << endl;
     return 0;
