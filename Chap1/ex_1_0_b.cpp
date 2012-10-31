@@ -1,7 +1,9 @@
-
+// Exercise 1-0 part b
 // ask for a person's name, and generate a framed greeting
+
 #include <iostream>
 #include <string>
+
 int main()
 {
     std::cout << "Please enter your first name: ";

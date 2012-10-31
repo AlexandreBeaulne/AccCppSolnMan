@@ -1,5 +1,6 @@
-
+// Exercise 1-0 part a
 // ask for a person's name, and greet the person
+
 #include <iostream>
 #include <string>
 int main()

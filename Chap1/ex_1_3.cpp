@@ -1,6 +1,8 @@
+// Exercise 1-3
 
 #include <iostream>
 #include <string>
+
 int main()
 {
     { const std::string s = "a string";

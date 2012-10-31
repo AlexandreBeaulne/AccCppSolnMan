@@ -1,7 +1,8 @@
+// Exercise 1-1
 
-// ask for a person's name, and generate a framed greeting
 #include <iostream>
 #include <string>
+
 int main()
 {
     const std::string hello = "Hello";

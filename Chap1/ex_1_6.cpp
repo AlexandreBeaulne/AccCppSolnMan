@@ -1,6 +1,8 @@
+// Exercise 1-6
 
 #include <iostream>
 #include <string>
+
 int main()
 {
     std::cout << "What is your name? ";
