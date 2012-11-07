@@ -1,3 +1,4 @@
+// Exercise 4-0 b
 
 #include<iostream>
 #include<vector>

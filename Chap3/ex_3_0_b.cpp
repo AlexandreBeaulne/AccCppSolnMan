@@ -1,4 +1,4 @@
-
+// Exercise 3-0 b
 
 #include<algorithm>
 #include<iomanip>

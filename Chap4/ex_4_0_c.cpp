@@ -1,3 +1,4 @@
+// Exercise 4-0 c
 
 #include<iostream>
 #include<algorithm>

@@ -1,4 +1,4 @@
-
+// Exercise 2-10 
 
 int main() {
     int n = 10;

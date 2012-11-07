@@ -1,4 +1,4 @@
-
+// Exercise 3-6
 
 #include<iomanip>
 #include<ios>
