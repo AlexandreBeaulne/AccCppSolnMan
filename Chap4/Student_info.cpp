@@ -34,3 +34,14 @@ istream& read_hw(istream& in, vector<double>& hw)
     }
     return in;
 }
+
+// Build support for using stream operator << with Student_info objects
+std::ostream & operator<<(std::ostream & stream, const Student_info & student)
+{ 
+    stream << "(name: " << student.name;
+    stream << ", midterm: " << student.midterm;
+    stream << ", final: " << student.final;
+    //stream << ", hws: " << student.homework << ")";
+
+    return stream;
+}
