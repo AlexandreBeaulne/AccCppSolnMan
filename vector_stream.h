@@ -10,7 +10,16 @@
 #include<iostream>
 #include<vector>
 
-template<typename T>
-std::ostream & operator<<(std::ostream &, const std::vector<T> &);
+template < class T >
+std::ostream& operator << (std::ostream& os, const std::vector<T>& v) 
+{
+    os << "[";
+    for (typename std::vector<T>::const_iterator ii = v.begin(); ii != v.end(); ++ii)
+    {
+        os << *ii << (ii!=v.end()-1 ? ", " : "");
+    }
+    os << "]";
+    return os;
+}
 
 #endif

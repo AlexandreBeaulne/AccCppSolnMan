@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "../vector_stream.h"
+
 struct Student_info {
     std::string name;
     double midterm, final;

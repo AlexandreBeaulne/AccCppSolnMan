@@ -38,7 +38,6 @@ std::string rand_str(const int len)
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         "abcdefghijklmnopqrstuvwxyz";
     
-
     std::string output;
 
     for (int i = 0; i < len; ++i)
@@ -62,8 +61,15 @@ int main(){
         students[i].midterm = rand() % 100;
         students[i].final = rand() % 100;
         students[i].homework.push_back(rand() % 100);
-        std::cout << students[i];// << std::endl;
+        students[i].homework.push_back(rand() % 100);
+        students[i].homework.push_back(rand() % 100);
     }    
 
-
+    std::cout << "\nAll students:" << std::endl;
+    std::cout << students << std::endl;
+    std::vector<Student_info> fail = extract_fails(students);
+    std::cout << "\nPassing students:" << std::endl;
+    std::cout << students << std::endl;
+    std::cout << "\nFailing students:" << std::endl;
+    std::cout << fail << std::endl;
 }

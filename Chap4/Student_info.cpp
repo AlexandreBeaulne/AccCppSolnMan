@@ -1,7 +1,7 @@
 
-
 // source file for Student_info-related functions
 #include "Student_info.h"
+
 using std::istream;
 using std::vector;
 
@@ -41,7 +41,7 @@ std::ostream & operator<<(std::ostream & stream, const Student_info & student)
     stream << "(name: " << student.name;
     stream << ", midterm: " << student.midterm;
     stream << ", final: " << student.final;
-    //stream << ", hws: " << student.homework << ")";
+    stream << ", hws: " << student.homework << ")";
 
     return stream;
 }
