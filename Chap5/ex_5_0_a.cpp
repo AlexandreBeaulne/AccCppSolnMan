@@ -31,18 +31,33 @@ bool fgrade(const Student_info & s)
 //    return fail;
 //}
 
-// second try: correct but potentially slow
+//// second try: correct but potentially slow
+//std::vector<Student_info> extract_fails(std::vector<Student_info>& students)
+//{
+//    std::vector<Student_info> fail;
+//    std::vector<Student_info>::size_type i = 0;
+//    // invariant:elements [0, i) of students represent passing grades
+//    while (i != students.size()) {
+//        if (fgrade(students[i])) {
+//            fail.push_back(students[i]);
+//            students.erase(students.begin() + i);
+//        } else
+//            ++i;
+//    }
+//    return fail;
+//}
+
+// version 3: iterators but no indexing; still potentially slow
 std::vector<Student_info> extract_fails(std::vector<Student_info>& students)
 {
     std::vector<Student_info> fail;
-    std::vector<Student_info>::size_type i = 0;
-    // invariant:elements [0, i) of students represent passing grades
-    while (i != students.size()) {
-        if (fgrade(students[i])) {
-            fail.push_back(students[i]);
-            students.erase(students.begin() + i);
+    std::vector<Student_info>::iterator iter = students.begin();
+    while (iter != students.end()) {
+        if (fgrade(*iter)) {
+            fail.push_back(*iter);
+            iter = students.erase(iter);
         } else
-            ++i;
+            ++iter;
     }
     return fail;
 }
