@@ -1,7 +1,10 @@
 // Exercise 5-0 a
+//#define CONTAINER vector
+#define CONTAINER list
 
 #include<iostream>
 #include<vector>
+#include<list>
 #include <stdlib.h>
 #include <time.h>
 
@@ -62,6 +65,21 @@ std::vector<Student_info> extract_fails(std::vector<Student_info>& students)
     return fail;
 }
 
+// version 4: use list instead of vector
+std::list<Student_info> extract_fails(std::list<Student_info>& students)
+{
+    std::list<Student_info> fail;
+    std::list<Student_info>::iterator iter = students.begin();
+    while (iter != students.end()) {
+        if (fgrade(*iter)) {
+            fail.push_back(*iter);
+            iter = students.erase(iter);
+        } else
+            ++iter;
+    }
+    return fail;
+}
+
 std::string rand_str(const int len)
 {
     static const char alphanum[] =
@@ -80,27 +98,29 @@ std::string rand_str(const int len)
 }
 
 int main(){
-    
     // Create a vector of random student_info structs to test on
     /* initialize random seed: */
     srand ( time(NULL) );
-    std::vector<Student_info> students(10);
-    for(std::vector<Student_info>::size_type i = 0;
-            i != students.size(); ++i)
+    int NUM_STUDENTS = 10;
+    std::CONTAINER<Student_info> students;
+    for(int i = 0; i < NUM_STUDENTS; ++i)
     {
-        students[i].name = rand_str(8);
-        students[i].midterm = rand() % 100;
-        students[i].final = rand() % 100;
-        students[i].homework.push_back(rand() % 100);
-        students[i].homework.push_back(rand() % 100);
-        students[i].homework.push_back(rand() % 100);
+        Student_info * temp = new Student_info();
+        temp->name = rand_str(8);
+        temp->midterm = rand() % 100;
+        temp->final = rand() % 100;
+        temp->homework.push_back(rand() % 100);
+        temp->homework.push_back(rand() % 100);
+        temp->homework.push_back(rand() % 100);
+        students.push_back(*temp);
     }    
 
     std::cout << "\nAll students:" << std::endl;
     std::cout << students << std::endl;
-    std::vector<Student_info> fail = extract_fails(students);
+    std::CONTAINER<Student_info> fail = extract_fails(students);
     std::cout << "\nPassing students:" << std::endl;
     std::cout << students << std::endl;
     std::cout << "\nFailing students:" << std::endl;
     std::cout << fail << std::endl;
 }
+
