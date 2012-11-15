@@ -1,22 +1,22 @@
 
-#ifndef VECTOR_STREAM
-#define VECTOR_STREAM
+#ifndef CONTAINER_STREAM
+#define CONTAINER_STREAM
 
 // Small function that allow the use of
-// the stream operator << on vectors of
+// the stream operator << on CONTAINERS of
 // TYPE (assuming TYPE objects themselves
 // support the << operator)
 
 #include<iostream>
-#include<vector>
 
-template < class T >
-std::ostream& operator << (std::ostream& os, const std::vector<T>& v) 
+//template < typename C, typename T >
+template < template <class> class C, class T >
+std::ostream& operator << (std::ostream& os, const typename C<T>& v) 
 {
     os << "[";
-    for (typename std::vector<T>::const_iterator ii = v.begin(); ii != v.end(); ++ii)
+    for(C<T>::iterator it = v.begin(); it != v.end(); ++it)
     {
-        os << *ii << (ii!=v.end()-1 ? ", " : "");
+        os << *it << (it!=v.end()-1 ? ", " : "");
     }
     os << "]";
     return os;

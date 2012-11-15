@@ -101,7 +101,7 @@ int main(){
     // Create a vector of random student_info structs to test on
     /* initialize random seed: */
     srand ( time(NULL) );
-    int NUM_STUDENTS = 10;
+    const int NUM_STUDENTS = 10;
     std::CONTAINER<Student_info> students;
     for(int i = 0; i < NUM_STUDENTS; ++i)
     {
