@@ -1,4 +1,5 @@
 // Exercise 5-0 a
+
 //#define CONTAINER vector
 #define CONTAINER list
 
@@ -8,15 +9,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../Chap4/grade.h"
 #include "../Chap4/Student_info.h"
-#include "../vector_stream.h"
-
-// predicate to determine whether a student failed
-bool fgrade(const Student_info & s)
-{
-    return grade(s) < 60;
-}
+#include "../container_stream.h"
 
 //// separate passing and failing student records: first try
 //std::vector<Student_info> extract_fails(std::vector<Student_info> & students)
@@ -116,11 +110,18 @@ int main(){
     }    
 
     std::cout << "\nAll students:" << std::endl;
-    std::cout << students << std::endl;
+    print(students);
+    std::cout << std::endl;
+
     std::CONTAINER<Student_info> fail = extract_fails(students);
     std::cout << "\nPassing students:" << std::endl;
-    std::cout << students << std::endl;
+    print(students);
+    std::cout << std::endl;
+
     std::cout << "\nFailing students:" << std::endl;
-    std::cout << fail << std::endl;
+    print(fail);
+    std::cout << std::endl;
+
+    return 0;
 }
 

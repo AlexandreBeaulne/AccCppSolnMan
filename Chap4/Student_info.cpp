@@ -1,5 +1,6 @@
 
 // source file for Student_info-related functions
+#include "grade.h"
 #include "Student_info.h"
 
 using std::istream;
@@ -8,6 +9,12 @@ using std::vector;
 bool compare(const Student_info& x, const Student_info& y)
 {
     return x.name < y.name;
+}
+
+// predicate to determine whether a student failed
+bool fgrade(const Student_info & s)
+{
+    return grade(s) < 60;
 }
 
 istream& read(istream& is, Student_info& s)

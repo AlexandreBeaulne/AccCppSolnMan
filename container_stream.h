@@ -9,17 +9,21 @@
 
 #include<iostream>
 
-//template < typename C, typename T >
-template < template <class> class C, class T >
-std::ostream& operator << (std::ostream& os, const typename C<T>& v) 
+template < class T >
+void print(const T & container) 
 {
-    os << "[";
-    for(C<T>::iterator it = v.begin(); it != v.end(); ++it)
+    std::cout << "[";
+
+    typename T::const_iterator next = container.begin();
+    typename T::const_iterator tail;
+    while(next!=container.end())
     {
-        os << *it << (it!=v.end()-1 ? ", " : "");
+        tail = next++;
+        std::cout << *tail;
+        std::cout << (next!=container.end() ? "," : "");
     }
-    os << "]";
-    return os;
+
+    std::cout << "]";
 }
 
 #endif
