@@ -1,6 +1,5 @@
 // Exercise 5-2
 
-
 #include<iostream>
 #include<vector>
 #include<list>
