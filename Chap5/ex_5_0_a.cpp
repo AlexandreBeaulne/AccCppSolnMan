@@ -1,119 +1,27 @@
 // Exercise 5-0 a
 
-//#define CONTAINER vector
-#define CONTAINER list
+//#define CONTAINER std::vector
+#define CONTAINER std::list
 
 #include<iostream>
 #include<vector>
 #include<list>
-#include <stdlib.h>
-#include <time.h>
 
 #include "../Chap4/Student_info.h"
 #include "../container_stream.h"
-
-//// separate passing and failing student records: first try
-//std::vector<Student_info> extract_fails(std::vector<Student_info> & students)
-//{
-//    std::vector<Student_info> pass, fail;
-//
-//    for(std::vector<Student_info>::size_type i = 0;
-//            i != students.size(); ++i)
-//        if(fgrade(students[i]))
-//            fail.push_back(students[i]);
-//        else
-//            pass.push_back(students[i]);
-//
-//    students = pass;
-//    return fail;
-//}
-
-//// second try: correct but potentially slow
-//std::vector<Student_info> extract_fails(std::vector<Student_info>& students)
-//{
-//    std::vector<Student_info> fail;
-//    std::vector<Student_info>::size_type i = 0;
-//    // invariant:elements [0, i) of students represent passing grades
-//    while (i != students.size()) {
-//        if (fgrade(students[i])) {
-//            fail.push_back(students[i]);
-//            students.erase(students.begin() + i);
-//        } else
-//            ++i;
-//    }
-//    return fail;
-//}
-
-// version 3: iterators but no indexing; still potentially slow
-std::vector<Student_info> extract_fails(std::vector<Student_info>& students)
-{
-    std::vector<Student_info> fail;
-    std::vector<Student_info>::iterator iter = students.begin();
-    while (iter != students.end()) {
-        if (fgrade(*iter)) {
-            fail.push_back(*iter);
-            iter = students.erase(iter);
-        } else
-            ++iter;
-    }
-    return fail;
-}
-
-// version 4: use list instead of vector
-std::list<Student_info> extract_fails(std::list<Student_info>& students)
-{
-    std::list<Student_info> fail;
-    std::list<Student_info>::iterator iter = students.begin();
-    while (iter != students.end()) {
-        if (fgrade(*iter)) {
-            fail.push_back(*iter);
-            iter = students.erase(iter);
-        } else
-            ++iter;
-    }
-    return fail;
-}
-
-std::string rand_str(const int len)
-{
-    static const char alphanum[] =
-        "0123456789"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "abcdefghijklmnopqrstuvwxyz";
-    
-    std::string output;
-
-    for (int i = 0; i < len; ++i)
-    {
-        output.push_back(alphanum[rand() % (sizeof(alphanum) - 1)]);
-    }
-
-    return output;
-}
+#include "extract_fails.h"
+#include "fill.h"
 
 int main(){
-    // Create a vector of random student_info structs to test on
-    /* initialize random seed: */
-    srand ( time(NULL) );
-    const int NUM_STUDENTS = 10;
-    std::CONTAINER<Student_info> students;
-    for(int i = 0; i < NUM_STUDENTS; ++i)
-    {
-        Student_info * temp = new Student_info();
-        temp->name = rand_str(8);
-        temp->midterm = rand() % 100;
-        temp->final = rand() % 100;
-        temp->homework.push_back(rand() % 100);
-        temp->homework.push_back(rand() % 100);
-        temp->homework.push_back(rand() % 100);
-        students.push_back(*temp);
-    }    
+
+    CONTAINER<Student_info> students;
+    fill(students,10);
 
     std::cout << "\nAll students:" << std::endl;
     print(students);
     std::cout << std::endl;
 
-    std::CONTAINER<Student_info> fail = extract_fails(students);
+    CONTAINER<Student_info> fail = extract_fails(students);
     std::cout << "\nPassing students:" << std::endl;
     print(students);
     std::cout << std::endl;
