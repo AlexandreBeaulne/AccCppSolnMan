@@ -9,31 +9,33 @@
 #include"Chap5/rotate.h"
 #include"Chap5/merge.h"
 
+template<typename T>
+T extract_girls(T & students)
+{
+    T girl;
+    typename T::iterator iter = students.begin();
+    while (iter != students.end()) {
+        if (*iter=="Mary") {
+            girl.push_back(*iter);
+            iter = students.erase(iter);
+        } else
+            ++iter;
+    }
+    return girl;
+}
+
 int main()
 {
-//    std::vector<double> vect;
-//    vect.push_back(21.65);
-//    vect.push_back(1);
-//    vect.push_back(-1.23);
-//
-//    std::cout << vect << std::endl;
-//
-//    std::string s = "aa bb cc";
-//    std::cout << split(s) << std::endl;
 
-//    std::vector<char> vect;
-//    vect.push_back('a');
-//    vect.push_back('b');
-//    vect.push_back('c');
-//    vect.push_back('d');
-//    vect.push_back('e');
-//    vect.push_back('f');
-//
-//    std::cout << rotate(vect,2) << std::endl;
-//
-//    std::string s = "aa bb cc";
-//    std::cout << split(s) << std::endl;
-//    std::cout << "\"" << merge(split(s)) << "\"" << std::endl;
+    std::vector<std::string> students;
+    students.push_back("John");
+    students.push_back("Mary");
+    students.push_back("Jack");
 
-    std::cout << ("abc"<"bca") << std::endl;
+    std::vector<std::string> girls = extract_girls(students);
+
+    std::cout << students << std::endl;
+    std::cout << girls << std::endl;
+
+    return 0;
 }

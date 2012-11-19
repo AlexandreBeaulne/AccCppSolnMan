@@ -38,7 +38,7 @@
 
 // version 3 & 4
 template<typename T>
-T extract_fails(T students)
+T extract_fails(T & students)
 {
     T fail;
     typename T::iterator iter = students.begin();

@@ -34,11 +34,11 @@ void fill(T & container, const unsigned int & num_students){
     {
         Student_info * temp = new Student_info();
         temp->name = rand_str(8);
-        temp->midterm = rand() % 100;
-        temp->final = rand() % 100;
-        temp->homework.push_back(rand() % 100);
-        temp->homework.push_back(rand() % 100);
-        temp->homework.push_back(rand() % 100);
+        temp->midterm = 30 + rand() % 70;
+        temp->final = 30 + rand() % 70;
+        temp->homework.push_back(30 + rand() % 70);
+        temp->homework.push_back(30 + rand() % 70);
+        temp->homework.push_back(30 + rand() % 70);
         container.push_back(*temp);
     }    
 }

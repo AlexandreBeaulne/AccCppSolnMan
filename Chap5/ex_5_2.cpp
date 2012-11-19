@@ -10,53 +10,8 @@
 
 #include "../Chap4/Student_info.h"
 #include "../container_stream.h"
-
-// version 3: iterators but no indexing; still potentially slow
-std::vector<Student_info> extract_fails(std::vector<Student_info>& students)
-{
-    std::vector<Student_info> fail;
-    std::vector<Student_info>::iterator iter = students.begin();
-    while (iter != students.end()) {
-        if (fgrade(*iter)) {
-            fail.push_back(*iter);
-            iter = students.erase(iter);
-        } else
-            ++iter;
-    }
-    return fail;
-}
-
-// version 4: use list instead of vector
-std::list<Student_info> extract_fails(std::list<Student_info>& students)
-{
-    std::list<Student_info> fail;
-    std::list<Student_info>::iterator iter = students.begin();
-    while (iter != students.end()) {
-        if (fgrade(*iter)) {
-            fail.push_back(*iter);
-            iter = students.erase(iter);
-        } else
-            ++iter;
-    }
-    return fail;
-}
-
-std::string rand_str(const int len)
-{
-    static const char alphanum[] =
-        "0123456789"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "abcdefghijklmnopqrstuvwxyz";
-    
-    std::string output;
-
-    for (int i = 0; i < len; ++i)
-    {
-        output.push_back(alphanum[rand() % (sizeof(alphanum) - 1)]);
-    }
-
-    return output;
-}
+#include "extract_fails.h"
+#include "fill.h"
 
 static unsigned long long get_timestamp(){
     struct timeval now;
@@ -66,25 +21,12 @@ static unsigned long long get_timestamp(){
 
 int main(){
     
-    /* initialize random seed: */
-    srand ( time(NULL) );
-
     for(int i = 1; i<=4; ++i){
         int num_students = pow(10,i);
         std::vector<Student_info> students_vector;
+        fill(students_vector, num_students);
         std::list<Student_info> students_list;
-        for(int i = 0; i < num_students; ++i)
-        {
-            Student_info * temp = new Student_info();
-            temp->name = rand_str(8);
-            temp->midterm = rand() % 100;
-            temp->final = rand() % 100;
-            temp->homework.push_back(rand() % 100);
-            temp->homework.push_back(rand() % 100);
-            temp->homework.push_back(rand() % 100);
-            students_vector.push_back(*temp);
-            students_list.push_back(*temp);
-        }    
+        fill(students_list, num_students);
 
         // vector
         unsigned long long t0 = get_timestamp();     
