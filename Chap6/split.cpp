@@ -3,7 +3,6 @@
 #include<string>
 #include<algorithm>
 
-
 // Wrap overloaded function to make
 // things clearer for the compiler
 bool space(char c)
