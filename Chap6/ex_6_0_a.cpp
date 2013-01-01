@@ -1,3 +1,4 @@
+// exercise 6-0 a)
 
 #include<iostream>
 #include<vector>
@@ -17,3 +18,4 @@ int main(){
 
     return 0;
 }
+

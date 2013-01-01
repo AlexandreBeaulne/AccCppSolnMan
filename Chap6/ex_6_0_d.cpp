@@ -1,3 +1,4 @@
+// exercise 6-0 d)
 
 #include<vector>
 #include<algorithm>

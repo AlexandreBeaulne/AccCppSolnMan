@@ -1,3 +1,4 @@
+// exercise 6-0 c)
 
 #include<string>
 #include<vector>
@@ -87,7 +88,13 @@ int main()
     // students who did and didn't do all their homework
     std::vector<Student_info> did, didnt;
     // read the student records and partition them
+    
     Student_info student;
+
+    std::cout << "Please enter each student's record on a line" << std::endl;
+    std::cout << "<Name> <midterm> <final> <hw1> <hw2> ... " << std::endl;
+    std::cout << "E.g. Smith 78 87 67 75 82" << std::endl;
+    std::cout << "Enter end-of-file (ctrl+D) when done" << std::endl;
 
     while (read(std::cin, student)) {
         if (did_all_hw(student))
